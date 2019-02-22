@@ -38,11 +38,48 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+    // db('actions')
+    // .where({ id: req.params.id })
+    // .first()
+    // .then(action => {
+    //     if(action){
+    //         db('context_actions')
+    //             .where({ action_id: req.params.id})
+    //             .then(contextActions => {
+    //                 if(contextActions){
+    //                     let contexts = contextActions.map(async contextAction => {
+    //                         let context = await db('contexts').where({ id: contextAction.context_id }).first()
+    //                         console.log(context.Context)
+    //                         return context.Context
+    //                     })
+    //                     let results = Promise.all(contexts)
+    //                     action.contexts = results
+    //                     res.status(200).json(action) 
+    //                 }
+    //             })
+    //             .catch(error => {
+    //                 res.status(500).json({
+    //                     message: "Server could not find context actions for given action",
+    //                     error
+    //                 })
+    //             })
+    //     }else{
+    //         res.status(404).json({
+    //             message: "Couldn't find action with given ID"
+    //         })
+    //     }
+    // })
+    // .catch(error => {
+    //     res.status(500).json({
+    //         message: "Server could not retrieve action",
+    //         error
+    //     })
+    // })
     db('actions')
         .where({ id: req.params.id })
         .then(action => {
             if(action){
-               res.status(200).json(action) 
+                res.status(200).json(action) 
             }else{
                 res.status(404).json({
                     message: "Couldn't find action with given ID"
