@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
                 })
                 .catch(error =>{
                     res.status(500).json({
-                        message: "Server could not find actions",
+                        message: "Server could not retrieve actions",
                         error
                     })
                 })
